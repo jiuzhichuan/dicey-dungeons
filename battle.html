@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <title>对战信息</title>
+        <style type="text/css">
+                body {
+                        margin: 0;
+                        padding: 0;
+                        background: #bdbdbd5a;
+                        color: #fff;
+                        font-family: 'Arial', sans-serif;
+                        text-align: center;
+                }
+
+                table {
+                        text-align: center;
+                        border-spacing: 0;
+                        /* 设置表格单元格之间的间距为0 */
+                }
+
+                img {
+                        border: none;
+                        vertical-align: middle;
+                }
+
+                td,
+                th {
+                        position: relative;
+                        /* 创建定位上下文 */
+                }
+
+                td img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        position: relative;
+                        /* 确保图片相对于单元格定位 */
+                }
+
+                .overlay {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        /* 居中定位 */
+                        width: 50px;
+                        height: 50px;
+                        z-index: 2;
+                        /* 确保叠加层在图片之上 */
+                }
+
+                /* 定义浮现图片的样式 */
+                .tip-image {
+                        position: absolute;
+                        display: none;
+                        width: 150px;
+                        height: auto;
+                        border-radius: 5px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                        z-index: 1000;
+                        animation: fadeIn 0.5s ease-in-out forwards;
+                        /* 应用动画 */
+                }
+
+                /* 定义关键帧动画 */
+                @keyframes fadeIn {
+                        from {
+                                opacity: 0;
+                                /* 开始时完全透明 */
+                                transform: translateY(-20px);
+                                /* 开始时向上偏移 */
+                        }
+
+                        to {
+                                opacity: 1;
+                                /* 结束时完全不透明 */
+                                transform: translateY(0);
+                                /* 结束时回到原位 */
+                        }
+                }
+
+                /* 鼠标经过时显示图片 */
+                .show-tip {
+                        display: block;
+                }
+
+                .text-overlay {
+                        position: absolute;
+                        top: 8%;
+                        left: 50%;
+                        /* 使元素相对于其父元素水平居中 */
+                        transform: translateX(-50%);
+                        /* 向左移动自身宽度的50%以实现水平居中 */
+                        width: 80%;
+                        /* 宽度为父元素的60%，确保宽度属性后面有单位，比如 % */
+                        height: calc(100% - 20%);
+                        background-color: transparent;
+                        color: rgb(138, 138, 138);
+                        padding: 10px;
+                        text-align: center;
+                        font-size: 15px;
+                        overflow-y: auto;
+                        scrollbar-width: thin;
+                        scrollbar-color: #999999 transparent;
+                        display: flex;
+                        /* 使用 Flexbox 布局 */
+                        justify-content: center;
+                        /* 水平居中 */
+                }
+
+                /* 定制滚动条样式 */
+                @supports (-ms-overflow-style: none) {
+
+                        /* IE 和 Edge */
+                        .text-overlay {
+                                overflow: -ms-scroll-y;
+                        }
+                }
+
+                .text-overlay::-webkit-scrollbar {
+                        /* Chrome, Safari 和 Opera */
+                        width: 4px;
+                        /* 更细的滚动条宽度 */
+                }
+
+                .text-overlay::-webkit-scrollbar-track {
+                        background: transparent;
+                        /* 滚动条轨道颜色 */
+                }
+
+                .text-overlay::-webkit-scrollbar-thumb {
+                        background: #999999;
+                        /* 滚动条滑块颜色 */
+                        border-radius: 3px;
+                        /* 圆角 */
+                }
+
+                .text-overlay::-webkit-scrollbar-thumb:hover {
+                        background: #a9a9a9;
+                        /* 滚动条滑块悬停颜色 */
+                }
+        </style>
+</head>
+
+<body>
+        <table width="700" height="" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                        <td colspan="5"><img src="image/bg.png" width="1546" height="701"></td>
+                </tr>
+                <tr>
+                        <td colspan="5">
+                                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                                        <td name="k_1_1" width="62" height="62" align="center" valign="middle"><img
+                                                        src="./image/kuan.png" width="62" height="62">
+                                        </td>
+                                        <td name="k_1_2" width="62" height="62" align="center" valign="middle"><img
+                                                        src="./image/kuan.png" width="62" height="62"></td>
+                                        <td name="k_1_3" width="62" height="62" align="center" valign="middle"><img
+                                                        src="./image/kuan.png" width="62" height="62"></td>
+                                        <td name="k_1_4" width="62" height="62" align="center" valign="middle"><img
+                                                        src="./image/kuan.png" width="62" height="62"></td>
+                                        <td name="battle" width="200" height="62" rowspan="5" align="center"
+                                                style=" background-image: url('image/bg.1.png');">
+                                        </td>
+                                        <td name="k_2_1" width="62" height="62" align="center" valign="middle"><img
+                                                        src="./image/kuan.png" width="62" height="62"></td>
+                                        <td name="k_2_2" width="62" height="62" align="center" valign="middle"><img
+                                                        src="./image/kuan.png" width="62" height="62"></td>
+                                        <td name="k_2_3" width="62" height="62" align="center" valign="middle"><img
+                                                        src="./image/kuan.png" width="62" height="62"></td>
+                                        <td name="k_2_4" width="62" height="62" align="center" valign="middle"><img
+                                                        src="./image/kuan.png" width="62" height="62"></td>
+                </tr>
+                <tr>
+                        <td name="k_1_5" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_1_6" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_1_7" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_1_8" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_2_5" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_2_6" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_2_7" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_2_8" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="61"></td>
+                </tr>
+                <tr>
+                        <td width="62" height="62" align="center" valign="middle"><img src="image/bg.1.png" width="62"
+                                        height="62">
+                        </td>
+                        <td width="62" height="62" align="center" valign="middle"><img src="image/bg.1.png" width="62"
+                                        height="62">
+                        </td>
+                        <td width="62" height="62" align="center" valign="middle"><img src="image/bg.1.png" width="62"
+                                        height="62">
+                        </td>
+                        <td width="62" height="62" align="center" valign="middle"><img src="image/bg.1.png" width="62"
+                                        height="62">
+                        </td>
+                        <td width="62" height="62" align="center" valign="middle"><img src="image/bg.1.png" width="62"
+                                        height="62">
+                        </td>
+                        <td width="62" height="62" align="center" valign="middle"><img src="image/bg.1.png" width="62"
+                                        height="62">
+                        </td>
+                        <td width="62" height="62" align="center" valign="middle"><img src="image/bg.1.png" width="62"
+                                        height="62">
+                        </td>
+                        <td width="62" height="62" align="center" valign="middle"><img src="image/bg.1.png" width="62"
+                                        height="62">
+                        </td>
+                </tr>
+                <tr>
+                        <td name="k_3_1" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_3_2" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_3_3" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_3_4" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_4_1" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_4_2" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_4_3" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_4_4" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                </tr>
+                <tr>
+                        <td name="k_3_5" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_3_6" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_3_7" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_3_8" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62">
+                        </td>
+                        <td name="k_4_5" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_4_6" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_4_7" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+                        <td name="k_4_8" width="62" height="62" align="center" valign="middle"><img
+                                        src="./image/kuan.png" width="62" height="62"></td>
+        </table>
+        </td>
+        </tr>
+        </table>
+        <script src="./js/battle.js"></script>
+</body>
+
+</html>
